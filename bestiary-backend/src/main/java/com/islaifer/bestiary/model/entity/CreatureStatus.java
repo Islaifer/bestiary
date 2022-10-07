@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/**
+ * Entity class for creature status
+ * @version 1.0.0
+ * */
 @Data
 @Entity
 public class CreatureStatus {

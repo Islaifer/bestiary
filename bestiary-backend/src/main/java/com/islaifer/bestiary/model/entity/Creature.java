@@ -7,6 +7,10 @@ import org.hibernate.annotations.LazyCollectionOption;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Entity class for creature
+ * @version 1.0.0
+ * */
 @Data
 @Entity
 public class Creature {
