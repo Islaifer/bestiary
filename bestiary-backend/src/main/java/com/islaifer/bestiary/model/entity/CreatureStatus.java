@@ -14,6 +14,8 @@ public class CreatureStatus {
 
     private int healthPoints;
 
+    private int difficultyLevel;
+
     private int maxAge;
 
     private int size;
