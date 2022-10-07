@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * Breed repository
- * @version 1.0.0
+ * @version 0.1.0
  * */
 @Repository
 public interface CreatureStatusRepository extends CrudRepository<CreatureStatus, Long> {

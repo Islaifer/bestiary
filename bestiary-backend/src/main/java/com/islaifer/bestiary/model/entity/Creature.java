@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * Entity class for creature
- * @version 1.0.0
+ * @version 0.1.0
  * */
 @Data
 @Entity

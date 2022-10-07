@@ -6,8 +6,9 @@ import org.springframework.stereotype.Repository;
 
 /**
  * Breed repository
- * @version 1.0.0
+ * @version 0.2.0
  * */
 @Repository
 public interface BreedRepository extends CrudRepository<Breed, Long> {
+    Breed findByName(String name);
 }

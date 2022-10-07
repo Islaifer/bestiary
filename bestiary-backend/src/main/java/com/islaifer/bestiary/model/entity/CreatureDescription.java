@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 /**
  * Entity class for creature description
- * @version 1.0.0
+ * @version 0.1.0
  * */
 @Data
 @Entity
