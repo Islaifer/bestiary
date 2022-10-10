@@ -5,7 +5,7 @@ import lombok.Data;
 
 /**
  * DTO class for creature skills
- * @version 0.3.0
+ * @version 0.4.0
  * */
 @Data
 public class CreatureSkillDTO{
@@ -17,7 +17,7 @@ public class CreatureSkillDTO{
     private String description;
 
     public CreatureSkillDTO(CreatureSkill data){
-        clone(data);
+        if(data != null)clone(data);
     }
 
     private void clone(CreatureSkill creatureSkill) {

@@ -5,7 +5,7 @@ import lombok.Data;
 
 /**
  * DTO class for creature status
- * @version 0.3.0
+ * @version 0.4.0
  * */
 @Data
 public class CreatureStatusDTO {
@@ -35,7 +35,7 @@ public class CreatureStatusDTO {
     private String trend;
 
     public CreatureStatusDTO(CreatureStatus data){
-        clone(data);
+        if(data != null)clone(data);
     }
 
     private void clone(CreatureStatus creatureStatus) {

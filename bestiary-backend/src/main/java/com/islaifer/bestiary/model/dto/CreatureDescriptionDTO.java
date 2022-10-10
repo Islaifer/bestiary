@@ -5,7 +5,7 @@ import lombok.Data;
 
 /**
  * DTO class for creatures description
- * @version 0.3.0
+ * @version 0.4.0
  * */
 @Data
 public class CreatureDescriptionDTO{
@@ -23,7 +23,7 @@ public class CreatureDescriptionDTO{
     private String obs;
 
     public CreatureDescriptionDTO(CreatureDescription data){
-        clone(data);
+        if(data != null)clone(data);
     }
 
     private void clone(CreatureDescription creatureDescription) {

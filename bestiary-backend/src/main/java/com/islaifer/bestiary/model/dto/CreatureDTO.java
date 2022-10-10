@@ -3,12 +3,13 @@ package com.islaifer.bestiary.model.dto;
 import com.islaifer.bestiary.model.entity.Creature;
 import lombok.Data;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
  * DTO class for creatures
- * @version 0.3.0
+ * @version 0.4.0
  * */
 @Data
 public class CreatureDTO {
@@ -27,7 +28,8 @@ public class CreatureDTO {
     private String urlImg;
 
     public CreatureDTO(Creature data){
-        clone(data);
+        skills = new LinkedList<>();
+        if(data != null)clone(data);
     }
 
     private void clone(Creature creature) {

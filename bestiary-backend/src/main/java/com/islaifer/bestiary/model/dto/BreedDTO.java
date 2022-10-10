@@ -3,12 +3,13 @@ package com.islaifer.bestiary.model.dto;
 import com.islaifer.bestiary.model.entity.Breed;
 import lombok.Data;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
  * DTO class for creature races
- * @version 0.2.0
+ * @version 0.3.0
  * */
 @Data
 public class BreedDTO {
@@ -19,8 +20,9 @@ public class BreedDTO {
     private String description;
 
     private List<CreatureDTO> creatures;
-    public BreedDTO(Breed breed){
-        clone(breed);
+    public BreedDTO(Breed data){
+        creatures = new LinkedList<>();
+        if(data != null)clone(data);
     }
 
     private void clone(Breed breed) {
