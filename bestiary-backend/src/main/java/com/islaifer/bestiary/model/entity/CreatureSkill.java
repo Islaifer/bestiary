@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 /**
  * Entity class for creature skills
- * @version 0.3.0
+ * @version 0.4.0
  * */
 @Data
 @Entity
@@ -26,7 +26,7 @@ public class CreatureSkill {
     }
 
     public void clone(CreatureSkillDTO creatureSkillDTO) {
-        this.name = creatureSkillDTO.getName();
-        this.description = creatureSkillDTO.getDescription();
+        if(creatureSkillDTO.getName() != null)this.name = creatureSkillDTO.getName();
+        if(creatureSkillDTO.getDescription() != null)this.description = creatureSkillDTO.getDescription();
     }
 }

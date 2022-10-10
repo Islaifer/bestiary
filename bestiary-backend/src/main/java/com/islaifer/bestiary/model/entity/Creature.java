@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 /**
  * Entity class for creature
- * @version 0.3.0
+ * @version 0.4.0
  * */
 @Data
 @Entity
@@ -41,10 +41,11 @@ public class Creature {
     }
 
     public void clone(CreatureDTO creatureDTO) {
-        this.name = creatureDTO.getName();
-        this.breed = new Breed(creatureDTO.getBreed());
-        this.status = new CreatureStatus(creatureDTO.getStatus());
-        this.skills = creatureDTO.getSkills().stream().map(CreatureSkill::new)
+        if(creatureDTO.getName() != null)this.name = creatureDTO.getName();
+        if(creatureDTO.getBreed() != null)this.breed = new Breed(creatureDTO.getBreed());
+        if(creatureDTO.getStatus() != null)this.status = new CreatureStatus(creatureDTO.getStatus());
+        if(creatureDTO.getSkills() != null)
+            this.skills = creatureDTO.getSkills().stream().map(CreatureSkill::new)
                 .collect(Collectors.toList());
     }
 }

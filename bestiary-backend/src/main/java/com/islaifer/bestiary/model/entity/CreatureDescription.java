@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 /**
  * Entity class for creature description
- * @version 0.3.0
+ * @version 0.4.0
  * */
 @Data
 @Entity
@@ -32,10 +32,14 @@ public class CreatureDescription {
     }
 
     public void clone(CreatureDescriptionDTO creatureDescriptionDTO) {
-        this.appearance = creatureDescriptionDTO.getAppearance();
-        this.behavior = creatureDescriptionDTO.getBehavior();
-        this.habitat = creatureDescriptionDTO.getHabitat();
-        this.warning = creatureDescriptionDTO.getWarning();
-        this.obs = creatureDescriptionDTO.getObs();
+        if(creatureDescriptionDTO.getAppearance() != null)
+            this.appearance = creatureDescriptionDTO.getAppearance();
+        if(creatureDescriptionDTO.getBehavior() != null)
+            this.behavior = creatureDescriptionDTO.getBehavior();
+        if(creatureDescriptionDTO.getHabitat() != null)
+            this.habitat = creatureDescriptionDTO.getHabitat();
+        if(creatureDescriptionDTO.getWarning() != null)
+            this.warning = creatureDescriptionDTO.getWarning();
+        if(creatureDescriptionDTO.getObs() != null)this.obs = creatureDescriptionDTO.getObs();
     }
 }
