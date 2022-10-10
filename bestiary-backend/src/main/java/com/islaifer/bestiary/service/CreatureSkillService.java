@@ -1,7 +1,6 @@
 package com.islaifer.bestiary.service;
 
 import com.islaifer.bestiary.dao.repository.CreatureSkillRepository;
-import com.islaifer.bestiary.exception.BreedException;
 import com.islaifer.bestiary.exception.CreatureSkillException;
 import com.islaifer.bestiary.model.dto.CreatureSkillDTO;
 import com.islaifer.bestiary.model.entity.CreatureSkill;
