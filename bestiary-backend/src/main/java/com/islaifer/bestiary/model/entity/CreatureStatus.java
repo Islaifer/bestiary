@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 /**
  * Entity class for creature status
- * @version 0.2.0
+ * @version 0.3.0
  * */
 @Data
 @Entity
@@ -44,7 +44,6 @@ public class CreatureStatus {
     }
 
     public void clone(CreatureStatusDTO creatureStatusDTO) {
-        this.id = creatureStatusDTO.getId();
         this.healthPoints = creatureStatusDTO.getHealthPoints();
         this.difficultyLevel = creatureStatusDTO.getDifficultyLevel();
         this.maxAge = creatureStatusDTO.getMaxAge();

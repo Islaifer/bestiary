@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 /**
  * Entity class for creature
- * @version 0.2.0
+ * @version 0.3.0
  * */
 @Data
 @Entity
@@ -41,7 +41,6 @@ public class Creature {
     }
 
     public void clone(CreatureDTO creatureDTO) {
-        this.id = creatureDTO.getId();
         this.name = creatureDTO.getName();
         this.breed = new Breed(creatureDTO.getBreed());
         this.status = new CreatureStatus(creatureDTO.getStatus());

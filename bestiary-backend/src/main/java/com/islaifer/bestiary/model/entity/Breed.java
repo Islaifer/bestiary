@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 /**
  * Entity class for creature races
- * @version 0.2.0
+ * @version 0.3.0
  * */
 @Data
 @Entity
@@ -31,8 +31,7 @@ public class Breed {
     public Breed(BreedDTO data){
         clone(data);
     }
-    private void clone(BreedDTO breedDTO){
-        this.id = breedDTO.getId();
+    public void clone(BreedDTO breedDTO){
         this.name = breedDTO.getName();
         this.description = breedDTO.getDescription();
         this.creatures = breedDTO.getCreatures().stream().map(Creature::new)
