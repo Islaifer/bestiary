@@ -1,6 +1,8 @@
 package com.islaifer.bestiary.service;
 
 import com.islaifer.bestiary.dao.repository.CreatureSkillRepository;
+import com.islaifer.bestiary.exception.BreedException;
+import com.islaifer.bestiary.exception.CreatureSkillException;
 import com.islaifer.bestiary.model.dto.CreatureSkillDTO;
 import com.islaifer.bestiary.model.entity.CreatureSkill;
 import org.slf4j.Logger;
@@ -13,7 +15,7 @@ import java.util.List;
 
 /**
  * Service class to administrate the service rules for the CreatureSkills
- * @version 0.1.0
+ * @version 0.2.0
  * */
 @Service
 public class CreatureSkillService {
@@ -43,7 +45,7 @@ public class CreatureSkillService {
      * Method used to save new CreatureSkill or update exist breed
      * @param data CreatureSkillDTO object that was saved or updated
      * */
-    private void save(CreatureSkillDTO data){
+    public void save(CreatureSkillDTO data){
         logger.debug("Start saving data!");
         CreatureSkill creatureSkill = get(data.getId());
         if(creatureSkill == null){
@@ -55,6 +57,17 @@ public class CreatureSkillService {
         }
         creatureSkillRepository.save(creatureSkill);
         logger.debug("Data was saved");
+    }
+
+    /**
+     * Method to delete a exist data
+     * @param data CreatureSkillDTO object that will update
+     * @throws CreatureSkillException Exception if any error occurred
+     * */
+    public void delete(CreatureSkillDTO data) throws CreatureSkillException {
+        CreatureSkill creatureSkill = get(data.getId());
+        if(creatureSkill == null) throw  new CreatureSkillException("Data don't exist");
+        creatureSkillRepository.delete(creatureSkill);
     }
 
     /**
