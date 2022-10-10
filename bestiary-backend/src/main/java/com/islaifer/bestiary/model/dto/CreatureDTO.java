@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 /**
  * DTO class for creatures
- * @version 0.2.0
+ * @version 0.3.0
  * */
 @Data
 public class CreatureDTO {
@@ -30,7 +30,7 @@ public class CreatureDTO {
         clone(data);
     }
 
-    public void clone(Creature creature) {
+    private void clone(Creature creature) {
         this.id = creature.getId();
         this.name = creature.getName();
         this.breed = new BreedDTO(creature.getBreed());

@@ -5,7 +5,7 @@ import lombok.Data;
 
 /**
  * DTO class for creature status
- * @version 0.2.0
+ * @version 0.3.0
  * */
 @Data
 public class CreatureStatusDTO {
@@ -38,7 +38,7 @@ public class CreatureStatusDTO {
         clone(data);
     }
 
-    public void clone(CreatureStatus creatureStatus) {
+    private void clone(CreatureStatus creatureStatus) {
         this.id = creatureStatus.getId();
         this.healthPoints = creatureStatus.getHealthPoints();
         this.difficultyLevel = creatureStatus.getDifficultyLevel();

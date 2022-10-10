@@ -5,7 +5,7 @@ import lombok.Data;
 
 /**
  * DTO class for creatures description
- * @version 0.2.0
+ * @version 0.3.0
  * */
 @Data
 public class CreatureDescriptionDTO{
@@ -26,7 +26,7 @@ public class CreatureDescriptionDTO{
         clone(data);
     }
 
-    public void clone(CreatureDescription creatureDescription) {
+    private void clone(CreatureDescription creatureDescription) {
         this.id = creatureDescription.getId();
         this.appearance = creatureDescription.getAppearance();
         this.behavior = creatureDescription.getBehavior();
