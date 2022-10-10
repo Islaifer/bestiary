@@ -1,15 +1,17 @@
 package com.islaifer.bestiary.model.entity;
 
+import com.islaifer.bestiary.model.dto.CreatureDTO;
 import lombok.Data;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Entity class for creature
- * @version 0.1.0
+ * @version 0.2.0
  * */
 @Data
 @Entity
@@ -33,4 +35,17 @@ public class Creature {
     private CreatureDescription description;
 
     private String urlImg;
+
+    public Creature(CreatureDTO data){
+        clone(data);
+    }
+
+    public void clone(CreatureDTO creatureDTO) {
+        this.id = creatureDTO.getId();
+        this.name = creatureDTO.getName();
+        this.breed = new Breed(creatureDTO.getBreed());
+        this.status = new CreatureStatus(creatureDTO.getStatus());
+        this.skills = creatureDTO.getSkills().stream().map(CreatureSkill::new)
+                .collect(Collectors.toList());
+    }
 }

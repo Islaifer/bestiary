@@ -1,5 +1,6 @@
 package com.islaifer.bestiary.model.entity;
 
+import com.islaifer.bestiary.model.dto.CreatureSkillDTO;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -8,7 +9,7 @@ import javax.persistence.Id;
 
 /**
  * Entity class for creature skills
- * @version 0.1.0
+ * @version 0.2.0
  * */
 @Data
 @Entity
@@ -19,4 +20,14 @@ public class CreatureSkill {
     private String name;
 
     private String description;
+
+    public CreatureSkill(CreatureSkillDTO data){
+        clone(data);
+    }
+
+    public void clone(CreatureSkillDTO creatureSkillDTO) {
+        this.id = creatureSkillDTO.getId();
+        this.name = creatureSkillDTO.getName();
+        this.description = creatureSkillDTO.getDescription();
+    }
 }

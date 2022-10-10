@@ -1,19 +1,22 @@
 package com.islaifer.bestiary.model.entity;
 
+import com.islaifer.bestiary.model.dto.BreedDTO;
 import lombok.Data;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Entity class for creature races
- * @version 0.1.0
+ * @version 0.2.0
  * */
 @Data
 @Entity
 public class Breed {
+
     @Id @GeneratedValue
     private Long id;
 
@@ -24,4 +27,15 @@ public class Breed {
     @OneToMany(mappedBy = "breed", cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Creature> creatures;
+
+    public Breed(BreedDTO data){
+        clone(data);
+    }
+    private void clone(BreedDTO breedDTO){
+        this.id = breedDTO.getId();
+        this.name = breedDTO.getName();
+        this.description = breedDTO.getDescription();
+        this.creatures = breedDTO.getCreatures().stream().map(Creature::new)
+                .collect(Collectors.toList());
+    }
 }
