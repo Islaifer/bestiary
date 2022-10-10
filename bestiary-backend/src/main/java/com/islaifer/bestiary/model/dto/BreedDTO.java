@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 /**
  * DTO class for creature races
- * @version 0.1.0
+ * @version 0.2.0
  * */
 @Data
 public class BreedDTO {
@@ -23,13 +23,11 @@ public class BreedDTO {
         clone(breed);
     }
 
-    public void clone(Object data) {
-        if(data instanceof Breed breed){
-            this.id = breed.getId();
-            this.name = breed.getName();
-            this.description = breed.getDescription();
-            this.creatures = breed.getCreatures().stream().map(CreatureDTO::new)
+    private void clone(Breed breed) {
+        this.id = breed.getId();
+        this.name = breed.getName();
+        this.description = breed.getDescription();
+        this.creatures = breed.getCreatures().stream().map(CreatureDTO::new)
                     .collect(Collectors.toList());
-        }
     }
 }

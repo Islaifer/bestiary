@@ -5,7 +5,7 @@ import lombok.Data;
 
 /**
  * DTO class for creature status
- * @version 0.1.0
+ * @version 0.2.0
  * */
 @Data
 public class CreatureStatusDTO {
@@ -38,20 +38,18 @@ public class CreatureStatusDTO {
         clone(data);
     }
 
-    public void clone(Object data) {
-        if(data instanceof CreatureStatus creatureStatus){
-            this.id = creatureStatus.getId();
-            this.healthPoints = creatureStatus.getHealthPoints();
-            this.difficultyLevel = creatureStatus.getDifficultyLevel();
-            this.maxAge = creatureStatus.getMaxAge();
-            this.size = creatureStatus.getSize();
-            this.strength = creatureStatus.getStrength();
-            this.dexterity = creatureStatus.getDexterity();
-            this.constitution = creatureStatus.getConstitution();
-            this.intelligence = creatureStatus.getIntelligence();
-            this.wisdom = creatureStatus.getWisdom();
-            this.charisma = creatureStatus.getCharisma();
-            this.trend = creatureStatus.getTrend();
-        }
+    public void clone(CreatureStatus creatureStatus) {
+        this.id = creatureStatus.getId();
+        this.healthPoints = creatureStatus.getHealthPoints();
+        this.difficultyLevel = creatureStatus.getDifficultyLevel();
+        this.maxAge = creatureStatus.getMaxAge();
+        this.size = creatureStatus.getSize();
+        this.strength = creatureStatus.getStrength();
+        this.dexterity = creatureStatus.getDexterity();
+        this.constitution = creatureStatus.getConstitution();
+        this.intelligence = creatureStatus.getIntelligence();
+        this.wisdom = creatureStatus.getWisdom();
+        this.charisma = creatureStatus.getCharisma();
+        this.trend = creatureStatus.getTrend();
     }
 }

@@ -5,7 +5,7 @@ import lombok.Data;
 
 /**
  * DTO class for creatures description
- * @version 0.1.0
+ * @version 0.2.0
  * */
 @Data
 public class CreatureDescriptionDTO{
@@ -26,14 +26,12 @@ public class CreatureDescriptionDTO{
         clone(data);
     }
 
-    public void clone(Object data) {
-        if(data instanceof CreatureDescription creatureDescription){
-            this.id = creatureDescription.getId();
-            this.appearance = creatureDescription.getAppearance();
-            this.behavior = creatureDescription.getBehavior();
-            this.habitat = creatureDescription.getHabitat();
-            this.warning = creatureDescription.getWarning();
-            this.obs = creatureDescription.getObs();
-        }
+    public void clone(CreatureDescription creatureDescription) {
+        this.id = creatureDescription.getId();
+        this.appearance = creatureDescription.getAppearance();
+        this.behavior = creatureDescription.getBehavior();
+        this.habitat = creatureDescription.getHabitat();
+        this.warning = creatureDescription.getWarning();
+        this.obs = creatureDescription.getObs();
     }
 }

@@ -5,7 +5,7 @@ import lombok.Data;
 
 /**
  * DTO class for creature skills
- * @version 0.1.0
+ * @version 0.2.0
  * */
 @Data
 public class CreatureSkillDTO{
@@ -20,11 +20,9 @@ public class CreatureSkillDTO{
         clone(data);
     }
 
-    public void clone(Object data) {
-        if(data instanceof  CreatureSkill creatureSkill){
-            this.id = creatureSkill.getId();
-            this.name = creatureSkill.getName();
-            this.description = creatureSkill.getDescription();
-        }
+    public void clone(CreatureSkill creatureSkill) {
+        this.id = creatureSkill.getId();
+        this.name = creatureSkill.getName();
+        this.description = creatureSkill.getDescription();
     }
 }
