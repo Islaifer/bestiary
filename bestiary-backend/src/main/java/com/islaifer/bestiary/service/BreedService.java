@@ -53,12 +53,7 @@ public class BreedService {
      * @throws BreedException Exception if any error occurred
      * */
     public void post(BreedDTO data) throws BreedException {
-        if(data.getName() == null || data.getName().isEmpty())
-            throw new BreedException("Name is required!");
-        if(data.getDescription() == null || data.getDescription().isEmpty())
-            throw new BreedException("Description is required!");
-        if(getByName(data.getName()).getName() != null && !getByName(data.getName()).getName().isEmpty())
-            throw new BreedException("Name already exist!");
+        verifyBreed(data);
         try{
             save(data);
             logger.info("Data was posted!");
@@ -66,6 +61,20 @@ public class BreedService {
             logger.error("Data wasn't posted!");
             throw new BreedException(e.getMessage());
         }
+    }
+
+    /**
+     * Method to verify all camps of breed
+     * @param data BreedDTO object that will be used to verify the camps
+     * @throws BreedException Exception if any error occurred
+     * */
+    public void verifyBreed(BreedDTO data) throws BreedException {
+        if(data.getName() == null || data.getName().isEmpty())
+            throw new BreedException("Name is required!");
+        if(data.getDescription() == null || data.getDescription().isEmpty())
+            throw new BreedException("Description is required!");
+        if(getByName(data.getName()).getName() != null && !getByName(data.getName()).getName().isEmpty())
+            throw new BreedException("Name already exist!");
     }
 
     /**

@@ -44,7 +44,7 @@ public class CreatureSkillService {
      * Method used to save new CreatureSkill or update exist breed
      * @param data CreatureSkillDTO object that was saved or updated
      * */
-    public void save(CreatureSkillDTO data){
+    public CreatureSkill save(CreatureSkillDTO data){
         logger.debug("Start saving data!");
         CreatureSkill creatureSkill = get(data.getId());
         if(creatureSkill == null){
@@ -56,6 +56,7 @@ public class CreatureSkillService {
         }
         creatureSkillRepository.save(creatureSkill);
         logger.debug("Data was saved");
+        return creatureSkill;
     }
 
     /**

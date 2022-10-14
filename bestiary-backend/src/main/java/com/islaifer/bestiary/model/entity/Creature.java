@@ -40,6 +40,11 @@ public class Creature {
         clone(data);
     }
 
+    public Creature(String name, String urlImg){
+        this.name = name;
+        this.urlImg = urlImg;
+    }
+
     public void clone(CreatureDTO creatureDTO) {
         if(creatureDTO.getName() != null)this.name = creatureDTO.getName();
         if(creatureDTO.getBreed() != null)this.breed = new Breed(creatureDTO.getBreed());
