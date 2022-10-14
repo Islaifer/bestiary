@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * Service class to administrate the service rules for the CreatureSkills
- * @version 0.2.0
+ * @version 0.3.0
  * */
 @Service
 public class CreatureSkillService {

@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * Breed repository
+ * CreatureStatus repository
  * @version 0.1.0
  * */
 @Repository

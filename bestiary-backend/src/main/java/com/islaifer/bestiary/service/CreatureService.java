@@ -14,6 +14,10 @@ import org.springframework.stereotype.Service;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Service class to administrate the service rules for the Creatures
+ * @version 0.1.0
+ * */
 @Service
 public class CreatureService {
     private final Logger logger = LoggerFactory.getLogger(CreatureService.class);
