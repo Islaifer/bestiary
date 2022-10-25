@@ -1,6 +1,7 @@
 package com.islaifer.bestiary.service;
 
 import com.islaifer.bestiary.dao.repository.BreedRepository;
+import com.islaifer.bestiary.dao.repository.CreatureRepository;
 import com.islaifer.bestiary.exception.BreedException;
 import com.islaifer.bestiary.model.dto.BreedDTO;
 import com.islaifer.bestiary.model.entity.Breed;
@@ -14,18 +15,21 @@ import java.util.List;
 
 /**
  * Service class to administrate the service rules for the Breeds
- * @version 0.2.0
+ * @version 0.3.0
  * */
 @Service
 public class BreedService {
 
     private final BreedRepository breedRepository;
 
+    private final CreatureRepository creatureRepository;
+
     private final Logger logger = LoggerFactory.getLogger(BreedService.class);
 
     @Autowired
-    public BreedService(BreedRepository breedRepository){
+    public BreedService(BreedRepository breedRepository, CreatureRepository creatureRepository){
         this.breedRepository = breedRepository;
+        this.creatureRepository = creatureRepository;
     }
 
     /**
@@ -100,7 +104,7 @@ public class BreedService {
     public void delete(BreedDTO data) throws BreedException{
         Breed breed = get(data.getId());
         if(breed == null) throw  new BreedException("Data don't exist");
-        //Create a logic to delete all creatures first
+        breed.getCreatures().forEach(creatureRepository::delete);
         breedRepository.delete(breed);
     }
 
