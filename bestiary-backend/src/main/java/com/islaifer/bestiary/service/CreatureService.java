@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * Service class to administrate the service rules for the Creatures
- * @version 0.1.0
+ * @version 0.2.0
  * */
 @Service
 public class CreatureService {
@@ -55,6 +55,7 @@ public class CreatureService {
     public List<CreatureDTO> getAll(){
         List<CreatureDTO> list = new LinkedList<>();
         creatureRepository.findAll().iterator().forEachRemaining(e -> list.add(new CreatureDTO(e)));
+        logger.info("All data was been found");
         return list;
     }
 
@@ -76,8 +77,11 @@ public class CreatureService {
         Creature creature;
         verifyCreature(creatureDTO);
         creature = new Creature(creatureDTO.getName(), creatureDTO.getUrlImg());
+        logger.debug("Configuring data");
         configCreature(creature, creatureDTO);
+        logger.debug("Saving data");
         save(creature);
+        logger.info("Creature was been saved");
     }
 
     /**
@@ -91,8 +95,11 @@ public class CreatureService {
         creature = get(creatureDTO.getId());
         if(creature == null) throw new CreatureException("Creature doesn't exist");
         creature.clone(creatureDTO);
+        logger.debug("Configuring data");
         configCreature(creature, creatureDTO);
+        logger.debug("Saving data");
         save(creature);
+        logger.info("Creature was been updated");
     }
 
     /**
@@ -107,9 +114,11 @@ public class CreatureService {
         if(creature == null) throw new CreatureException("Creature doesn't exist");
         creatureDescription = creature.getDescription();
         creatureStatus = creature.getStatus();
+        logger.debug("Deleting creature");
         creatureRepository.delete(creature);
         creatureDescriptionRepository.delete(creatureDescription);
         creatureStatusRepository.delete(creatureStatus);
+        logger.info("Creature was been deleted");
     }
 
     /**
@@ -123,6 +132,7 @@ public class CreatureService {
         if(breed == null){
             breed = createBreed(new Breed(breedDTO));
         }
+        logger.info("Getting breed was been found");
         return breed;
     }
 
@@ -142,6 +152,7 @@ public class CreatureService {
             }
             list.add(creatureSkill);
         }
+        logger.info("Getting skills was been found");
         return list;
     }
 
@@ -158,6 +169,7 @@ public class CreatureService {
         creatureStatus = creature.getStatus();
         creatureStatus.clone(creatureDTO.getStatus());
         save(creatureStatus);
+        logger.info("Getting status was been found");
         return creatureStatus;
     }
 
@@ -176,7 +188,7 @@ public class CreatureService {
 
     /**
      * Method to get or create a new creature description
-     * @param creatureDTO CreatureDTO object that will ne used into queries
+     * @param creatureDTO CreatureDTO object that will be used into queries
      * @return CreatureDescription
      * @throws CreatureException Exception if any error occurred
      * */
@@ -187,6 +199,7 @@ public class CreatureService {
         creatureDescription = creature.getDescription();
         creatureDescription.clone(creatureDTO.getDescription());
         save(creatureDescription);
+        logger.info("Getting description was been found");
         return creatureDescription;
     }
 
@@ -308,13 +321,19 @@ public class CreatureService {
         CreatureStatus creatureStatus;
         CreatureDescription creatureDescription;
         List<CreatureSkill> creatureSkills;
+        logger.debug("Getting breed");
         breed = getBreed(creatureDTO.getBreed());
+        logger.debug("Getting creature status");
         creatureStatus = getCreatureStatus(creatureDTO);
+        logger.debug("Getting creature description");
         creatureDescription = getCreatureDescription(creatureDTO);
+        logger.debug("Getting creature skills");
         creatureSkills = getSkills(creatureDTO.getSkills());
+        logger.debug("Setting the data taken");
         creature.setBreed(breed);
         creature.setStatus(creatureStatus);
         creature.setDescription(creatureDescription);
         creature.setSkills(creatureSkills);
+        logger.info("Finishing configure creature object");
     }
 }

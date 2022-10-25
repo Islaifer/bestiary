@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * Service class to administrate the service rules for the CreatureSkills
- * @version 0.3.0
+ * @version 0.4.0
  * */
 @Service
 public class CreatureSkillService {
@@ -68,6 +68,7 @@ public class CreatureSkillService {
         CreatureSkill creatureSkill = get(data.getId());
         if(creatureSkill == null) throw  new CreatureSkillException("Data don't exist");
         creatureSkillRepository.delete(creatureSkill);
+        logger.info("Data was deleted");
     }
 
     /**
