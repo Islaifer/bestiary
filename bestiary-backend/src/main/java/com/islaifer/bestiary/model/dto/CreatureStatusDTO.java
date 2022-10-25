@@ -1,13 +1,17 @@
 package com.islaifer.bestiary.model.dto;
 
 import com.islaifer.bestiary.model.entity.CreatureStatus;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * DTO class for creature status
- * @version 0.4.0
+ * @version 0.5.0
  * */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class CreatureStatusDTO {
 
     private Long id;

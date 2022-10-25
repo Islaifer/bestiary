@@ -1,7 +1,9 @@
 package com.islaifer.bestiary.model.dto;
 
 import com.islaifer.bestiary.model.entity.Creature;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -9,9 +11,11 @@ import java.util.stream.Collectors;
 
 /**
  * DTO class for creatures
- * @version 0.4.0
+ * @version 0.5.0
  * */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class CreatureDTO {
     private Long id;
 

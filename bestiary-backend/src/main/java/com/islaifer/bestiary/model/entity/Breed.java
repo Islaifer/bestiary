@@ -1,7 +1,9 @@
 package com.islaifer.bestiary.model.entity;
 
 import com.islaifer.bestiary.model.dto.BreedDTO;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -11,10 +13,12 @@ import java.util.stream.Collectors;
 
 /**
  * Entity class for creature races
- * @version 0.4.0
+ * @version 0.5.0
  * */
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Breed {
 
     @Id @GeneratedValue

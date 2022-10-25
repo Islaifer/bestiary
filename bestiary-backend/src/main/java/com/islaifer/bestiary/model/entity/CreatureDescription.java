@@ -1,7 +1,9 @@
 package com.islaifer.bestiary.model.entity;
 
 import com.islaifer.bestiary.model.dto.CreatureDescriptionDTO;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,10 +11,12 @@ import javax.persistence.Id;
 
 /**
  * Entity class for creature description
- * @version 0.4.0
+ * @version 0.5.0
  * */
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class CreatureDescription {
     @Id @GeneratedValue
     private Long id;

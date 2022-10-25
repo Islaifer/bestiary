@@ -1,7 +1,9 @@
 package com.islaifer.bestiary.model.entity;
 
 import com.islaifer.bestiary.model.dto.CreatureDTO;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -11,10 +13,12 @@ import java.util.stream.Collectors;
 
 /**
  * Entity class for creature
- * @version 0.5.0
+ * @version 0.6.0
  * */
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Creature {
     @Id @GeneratedValue
     private Long id;
