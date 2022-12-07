@@ -33,7 +33,5 @@ public class BreedDTO {
         this.id = breed.getId();
         this.name = breed.getName();
         this.description = breed.getDescription();
-        this.creatures = breed.getCreatures().stream().map(CreatureDTO::new)
-                    .collect(Collectors.toList());
     }
 }

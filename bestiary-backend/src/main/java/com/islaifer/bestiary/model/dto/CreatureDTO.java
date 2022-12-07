@@ -41,7 +41,9 @@ public class CreatureDTO {
         this.name = creature.getName();
         this.breed = new BreedDTO(creature.getBreed());
         this.status = new CreatureStatusDTO(creature.getStatus());
+        this.description = new CreatureDescriptionDTO(creature.getDescription());
         this.skills = creature.getSkills().stream().map(CreatureSkillDTO::new)
                     .collect(Collectors.toList());
+        this.urlImg = creature.getUrlImg();
     }
 }

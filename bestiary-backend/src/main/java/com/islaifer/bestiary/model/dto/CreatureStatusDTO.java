@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * DTO class for creature status
- * @version 0.5.0
+ * @version 0.6.0
  * */
 @Data
 @AllArgsConstructor
@@ -22,7 +22,7 @@ public class CreatureStatusDTO {
 
     private int maxAge;
 
-    private int size;
+    private double size;
 
     private int strength;
 

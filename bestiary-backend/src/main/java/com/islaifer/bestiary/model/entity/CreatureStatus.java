@@ -11,7 +11,7 @@ import javax.persistence.Id;
 
 /**
  * Entity class for creature status
- * @version 0.5.0
+ * @version 0.6.0
  * */
 @Data
 @Entity
@@ -27,7 +27,7 @@ public class CreatureStatus {
 
     private int maxAge;
 
-    private int size;
+    private double size;
 
     private int strength;
 

@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * Service class to administrate the service rules for the Creatures
- * @version 0.2.0
+ * @version 0.3.0
  * */
 @Service
 public class CreatureService {
@@ -128,7 +128,8 @@ public class CreatureService {
      * @throws CreatureException Exception if any error occurred
      * */
     private Breed getBreed(BreedDTO breedDTO) throws CreatureException {
-        Breed breed = getBreed(breedDTO.getId());
+        Breed breed = null;
+        if(breedDTO.getId() != null) breed = getBreed(breedDTO.getId());
         if(breed == null){
             breed = createBreed(new Breed(breedDTO));
         }
@@ -144,13 +145,12 @@ public class CreatureService {
      * */
     private List<CreatureSkill> getSkills(List<CreatureSkillDTO> listDTO) throws CreatureException {
         List<CreatureSkill> list = new LinkedList<>();
-        CreatureSkill creatureSkill;
+        CreatureSkill creatureSkill = null;
         for(CreatureSkillDTO creatureSkillDTO : listDTO){
-            creatureSkill = getCreatureSkill(creatureSkillDTO.getId());
-            if(creatureSkill == null){
-                creatureSkill = createCreatureSkill(new CreatureSkill(creatureSkillDTO));
-            }
+            if(creatureSkillDTO.getId() != null) creatureSkill = getCreatureSkill(creatureSkillDTO.getId());
+            if(creatureSkill == null) creatureSkill = createCreatureSkill(new CreatureSkill(creatureSkillDTO));
             list.add(creatureSkill);
+            creatureSkill = null;
         }
         logger.info("Getting skills was been found");
         return list;
@@ -163,12 +163,10 @@ public class CreatureService {
      * @throws CreatureException Exception if any error occurred
      * */
     private CreatureStatus getCreatureStatus(CreatureDTO creatureDTO) throws CreatureException {
-        CreatureStatus creatureStatus;
-        Creature creature = get(creatureDTO.getId());
-        if(creature == null) return createStatus(new CreatureStatus(creatureDTO.getStatus()));
-        creatureStatus = creature.getStatus();
+        CreatureStatus creatureStatus = null;
+        if(creatureDTO.getId() != null) creatureStatus = creatureStatusRepository.findById(creatureDTO.getStatus().getId()).orElse(null);
+        if(creatureStatus == null) return createStatus(new CreatureStatus(creatureDTO.getStatus()));
         creatureStatus.clone(creatureDTO.getStatus());
-        save(creatureStatus);
         logger.info("Getting status was been found");
         return creatureStatus;
     }
@@ -193,12 +191,10 @@ public class CreatureService {
      * @throws CreatureException Exception if any error occurred
      * */
     private CreatureDescription getCreatureDescription(CreatureDTO creatureDTO) throws CreatureException {
-        CreatureDescription creatureDescription;
-        Creature creature = get(creatureDTO.getId());
-        if(creature == null) return createDescription(new CreatureDescription(creatureDTO.getDescription()));
-        creatureDescription = creature.getDescription();
+        CreatureDescription creatureDescription = null;
+        if(creatureDTO.getId() != null) creatureDescription = creatureDescriptionRepository.findById(creatureDTO.getDescription().getId()).orElse(null);
+        if(creatureDescription == null) return createDescription(new CreatureDescription(creatureDTO.getDescription()));
         creatureDescription.clone(creatureDTO.getDescription());
-        save(creatureDescription);
         logger.info("Getting description was been found");
         return creatureDescription;
     }
@@ -304,7 +300,7 @@ public class CreatureService {
      * */
     private void verifyCreature(CreatureDTO creatureDTO) throws CreatureException {
         if(creatureDTO.getName() == null || creatureDTO.getName().isEmpty()) throw new CreatureException("Name is empty");
-        if(getByName(creatureDTO.getName()) != null) throw new CreatureException("Name already exist");
+        if(creatureDTO.getId() == null && getByName(creatureDTO.getName()) != null) throw new CreatureException("Name already exist");
         if(creatureDTO.getStatus() == null) throw new CreatureException("Status is empty");
         if(creatureDTO.getBreed() == null) throw new CreatureException("Breed is empty");
         if(creatureDTO.getDescription() == null) throw new CreatureException("Description is empty");

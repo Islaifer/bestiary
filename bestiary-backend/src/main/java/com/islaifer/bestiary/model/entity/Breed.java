@@ -28,7 +28,7 @@ public class Breed {
 
     private String description;
 
-    @OneToMany(mappedBy = "breed", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "breed")
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Creature> creatures;
 
@@ -38,8 +38,10 @@ public class Breed {
     public void clone(BreedDTO breedDTO){
         if(breedDTO.getName() != null) this.name = breedDTO.getName();
         if(breedDTO.getDescription() != null) this.description = breedDTO.getDescription();
-        if(breedDTO.getCreatures() != null)
-            this.creatures = breedDTO.getCreatures().stream().map(Creature::new)
-                .collect(Collectors.toList());
+    }
+
+    @Override
+    public String toString(){
+        return this.name;
     }
 }
